@@ -1,0 +1,25 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad=0.2, nodesep=0.25, ranksep=0.35, dpi=150];
+node [shape=box, style="rounded,filled", fontname="Times New Roman", fontsize=11, color="#2F5597", fillcolor="#EAF2F8", margin="0.12,0.08"];
+edge [fontname="Times New Roman", fontsize=9, color="#555555"];
+start [label="Начало", shape=oval, fillcolor="#E2F0D9", color="#548235"];
+end [label="Завершение", shape=oval, fillcolor="#FCE4D6", color="#C65911"];
+n1 [label="Получить количество, цену и скидку", shape=parallelogram, fillcolor="#E4DFEC", color="#7030A0"];
+n2 [label="A1. Проверить: 1 <= количество <= 10000,\n0 < цена <= 5000000, 0 <= скидка <= 30"];
+n3 [label="Данные корректны?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+n4 [label="База = количество × цена"];
+n5 [label="A2. Сумма со скидкой = база × (1 − скидка / 100);\nНДС = сумма со скидкой × 20 / 100;\nИтог = сумма со скидкой + НДС"];
+n9 [label="Количество < 20?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+n8 [label="Итог = итог + 500 руб. за обработку"];
+n6 [label="Вывести итог с двумя знаками после запятой", shape=parallelogram, fillcolor="#E4DFEC", color="#7030A0"];
+n7 [label="Вывести причину ошибки, расчёт не выполнять", shape=parallelogram, fillcolor="#E4DFEC", color="#7030A0"];
+start -> n1 -> n2 -> n3;
+n3 -> n4 [label="да"];
+n3 -> n7 [label="нет"];
+n4 -> n5 -> n9;
+n9 -> n8 [label="да"];
+n9 -> n6 [label="нет"];
+n8 -> n6;
+n6 -> end;
+n7 -> end;
+}

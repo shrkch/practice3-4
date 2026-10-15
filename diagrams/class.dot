@@ -1,0 +1,8 @@
+digraph C {
+graph [rankdir=TB, bgcolor="white", pad=0.2, nodesep=0.35, ranksep=0.5, dpi=150];
+node [shape=record, style="filled", fontname="Times New Roman", fontsize=10, color="#2F5597", fillcolor="#EAF2F8"];
+edge [fontname="Times New Roman", fontsize=9, color="#555555"];
+calc [label="{OrderCalculator|- VAT_RATE: double = 20.0\l- FREE_PROCESSING_THRESHOLD: int = 20\l- PROCESSING_FEE: double = 500.0\l|+ isValid(quantity: int, unitPrice: double, discountPercent: double): boolean\l+ calculateBase(quantity: int, unitPrice: double): double\l+ applyDiscount(base: double, discountPercent: double): double\l+ calculateVat(discounted: double, vatPercent: double): double\l+ calculateTotal(quantity: int, unitPrice: double, discountPercent: double, vatPercent: double): double\l+ calculateProcessingFee(quantity: int): double\l+ calculateTotalWithProcessing(quantity: int, unitPrice: double, discountPercent: double): double\l}"];
+check [label="{SelfCheck||+ main(args: String[]): void\l}"];
+check -> calc [style=dashed, arrowhead=vee, label=" «use»"];
+}
